@@ -1,7 +1,7 @@
 
 # Simulation cours de Commande à l'ISEN Brest.
 
-Plusieurs simulation de différents systèmes régulés suivant différentes consignes.
+Plusieurs simulations de différents systèmes régulés suivant différentes consignes.
 
 Tel que:
   - Système du char
