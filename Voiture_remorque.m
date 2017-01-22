@@ -21,7 +21,7 @@ yd = R*cos(f1*t) + R*cos(f2*t);
 plot(xd,yd);
 hold on;
 
-for i=0:dt:5
+for i=0:dt:15
     %mettre a jour la commande
     xd = R*sin(f1*i) + R*sin(f2*i);
     yd = R*cos(f1*i) + R*cos(f2*i);
@@ -30,8 +30,13 @@ for i=0:dt:5
     ddxd = -R*f1*f1*sin(f1*i) - R*f2*f2*sin(f2*i);
     ddyd = -R*f1*f1*cos(f1*i) - R*f2*f2*cos(f2*i);
     %Régulateur
-    uGlissant = regulateurGlissant( xGlissant,xd,dxd,yd,dyd );
-    uGlissant2 = regulateurGlissant( xGlissant2,xd,dxd,yd,dyd );
+    %regulateur suiveur trajectoire initiale
+%     uGlissant = regulateurGlissant( xGlissant,xd,dxd,yd,dyd );
+%     uGlissant2 = regulateurGlissant( xGlissant2,xd,dxd,yd,dyd )   
+    % changement de régulateur pour faire que les remorques suivent
+    uGlissant = regulateurGlissantSuiveur( xGlissant,xTricycle(1),dxd,xTricycle(2),dyd );
+    uGlissant2 = regulateurGlissantSuiveur( xGlissant2,xGlissant(1),dxd,xGlissant(2),dyd );
+   
     UTricycle = regulateurTricycle( xTricycle,xd,dxd,ddxd,yd,dyd,ddyd );
     % simulation du systeme de la voiture et les deux remorques
    xGlissant = xGlissant + evolutionChar(xGlissant,uGlissant)*dt;
