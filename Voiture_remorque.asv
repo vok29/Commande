@@ -60,14 +60,11 @@ for i=0:dt:10
     uGlissant = regulateurGlissantSuiveur( xGlissant,xRem1,0,yRem1,0 );
     uGlissant2 = regulateurGlissantSuiveur( xGlissant2,xRem2,0,yRem2,0 );
    
-    if(xTricycle(5) >(xTricycle(3) + 30))
-        xTricycle(5) = xTricycle(3) + 30;
-    elseif(xTricycle(5) < (xTricycle(3) - 30))
-           xTricycle(5) = xTricycle(3) - 30;
-    else
-         xTricycle(5) =  xTricycle(5);
-    end
-        
+    if(xTricycle(5) >(xTricycle(3) + 30)
+        {
+            xTricycle(5) = xTricycle(3) + 30;
+        }
+    elseif(xTricycle(5) >(xTricycle(3) + 30)
     
     UTricycle = regulateurTricycle( xTricycle,xd,dxd,ddxd,yd,dyd,ddyd );
     % simulation du systeme de la voiture et les deux remorques
